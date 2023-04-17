@@ -3,7 +3,11 @@ tap_install:
     shared:
       ingress_domain: "34.31.106.254.nip.io"
       ingress_issuer: ""
-    
+      
+      image_registry:
+        project_path: "registry.tanzu-lab.com/suman-tap"
+        username: "admin"
+   
     ceip_policy_disclosed: true
       
     profile:  full
@@ -21,6 +25,11 @@ tap_install:
       envoy:
         service:
           type: LoadBalancer
+
+    buildservice:
+      kp_default_repository: "registry.tanzu-lab.com/suman-tap/build-service"
+      kp_default_repository_username: "admin"
+      exclude_dependencies: true
 
     tap_gui:
       service_type: ClusterIP # If the shared.ingress_domain is set as earlier, this must be set to ClusterIP.
