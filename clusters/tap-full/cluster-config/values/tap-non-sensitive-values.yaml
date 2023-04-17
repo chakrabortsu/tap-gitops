@@ -44,6 +44,13 @@ tap_install:
       ns_for_export_app_cert: "dev"
       app_service_type: ClusterIP
 
+    namespace_provisioner:
+      controller: false
+      gitops_install:
+        ref: origin/main
+        subPath: ns-provisioner-samples/gitops-install
+        url: git@github.com:chakrabortsu/application-accelerator-samples.git
+
     scanning:
       metadataStore:
       url: "" # Disable embedded integration since it's deprecated
