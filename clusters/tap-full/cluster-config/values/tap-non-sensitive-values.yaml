@@ -1,7 +1,7 @@
 tap_install:
   values:
     shared:
-      ingress_domain: "34.31.106.254.nip.io"
+      ingress_domain: "34.28.138.142.nip.io"
       ingress_issuer: ""
       
       image_registry:
