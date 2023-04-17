@@ -1,0 +1,59 @@
+tap_install:
+  values:
+    shared:
+      ingress_domain: "nip.io"
+      ingress_issuer: ""
+    
+      image_registry:
+        project_path: "registry.tanzu-lab.com/suman-tap"
+        username: "admin"
+      
+      ceip_policy_disclosed: true
+      
+      profile:  full
+      
+      supply_chain: basic
+    
+      ootb_supply_chain_basic:
+        registry:
+          server: "registry.tanzu-lab.com"
+          repository: "suman-tap"
+        gitops:
+          ssh_secret: ""
+  
+      contour:
+        envoy:
+          service:
+            type: LoadBalancer
+      
+      buildservice:
+        kp_default_repository: registry.tanzu-lab.com/suman-tap/build-service
+        kp_default_repository_username: admin
+
+      tap_gui:
+        service_type: ClusterIP # If the shared.ingress_domain is set as earlier, this must be set to ClusterIP.
+        metadataStoreAutoconfiguration: true #Create a service account,the Kubernetes control plane token and the requisite app_config block to enable communications between Tanzu Application Platform GUI and SCST - Store.
+        app_config:
+          catalog:
+            locations:
+            - type: url
+              target: https://github.com/suchakra012/tap-yelb-catalog/blob/main/catalog-info.yaml
+
+      metadata_store:
+        ns_for_export_app_cert: "dev"
+        app_service_type: ClusterIP
+
+      scanning:
+        metadataStore:
+          url: "" # Disable embedded integration since it's deprecated
+     
+      excluded_packages:
+      - learningcenter.tanzu.vmware.com
+      - workshops.learningcenter.tanzu.vmware.com
+      
+      grype:
+        namespace: "default"
+        targetImagePullSecret: "registries-credentials"
+      
+      policy:
+        tuf_enabled: false
