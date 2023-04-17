@@ -29,8 +29,8 @@ tap_install:
     buildservice:
       kp_default_repository: "registry.tanzu-lab.com/suman-tap/build-service"
       kp_default_repository_secret:
-        name: tbs-install-pull-secret
-        namespace: build-service
+        name: registries-credentials
+        namespace: tap-install
       exclude_dependencies: true
 
     tap_gui:
