@@ -1,7 +1,7 @@
 tap_install:
   values:
     shared:
-      ingress_domain: "nip.io"
+      ingress_domain: "34.31.106.254.nip.io"
       ingress_issuer: ""
     
     ceip_policy_disclosed: true
