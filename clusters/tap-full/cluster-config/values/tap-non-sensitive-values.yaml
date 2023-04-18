@@ -46,11 +46,7 @@ tap_install:
       app_service_type: ClusterIP
 
     namespace_provisioner:
-      controller: false
-      gitops_install:
-        ref: origin/main
-        subPath: ns-provisioner-samples/gitops-install
-        url: https://github.com/chakrabortsu/application-accelerator-samples.git
+      controller: true
 
     scanning:
       metadataStore:
